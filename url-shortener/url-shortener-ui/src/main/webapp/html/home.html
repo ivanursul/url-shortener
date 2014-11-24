@@ -10,18 +10,21 @@
 		<div class="col-lg-6">
 			<form role="form" name="urlShortener">
 				<div class="form-group">
-					<label for="url">Paste your long url here:</label> 
-					<input	type="text" type="url" ng-model="longUrl" class="form-control" 	id="url">
+					<label for="url">Paste your long url here:</label> <input
+						type="text" type="url" ng-model="longUrl" class="form-control"
+						id="url">
 				</div>
 				<button ng-click="createShortUrl()" class="btn btn-default">Create
 					short url</button>
 			</form>
 		</div>
-		<div class="col-lg-6 check-element animate-hide" ng-show="shortUrl">
+		<div class="col-lg-6 " ng-show="shortUrl">
 			<form>
 				<div class="form-group">
-					<label for="url">Your new short url :</label> 
-					<input	type="text" type="url" ng-model="shortUrl" class="form-control" id="url" readonly="readonly">
+					<label for="url">Your new short url :</label>
+					<div >
+						<a ng-href="{{shortUrl}}">{{shortUrl}}</a>
+					</div>
 				</div>
 			</form>
 		</div>
