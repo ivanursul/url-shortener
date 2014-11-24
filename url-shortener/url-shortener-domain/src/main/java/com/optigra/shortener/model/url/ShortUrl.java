@@ -1,6 +1,6 @@
-package com.optigra.shortener.facade.resource.url;
+package com.optigra.shortener.model.url;
 
-public class ShortUrlResource extends UrlResource {
+public class ShortUrl extends Url {
 
 	private String shortUrl;
 
@@ -32,7 +32,7 @@ public class ShortUrlResource extends UrlResource {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		ShortUrlResource other = (ShortUrlResource) obj;
+		ShortUrl other = (ShortUrl) obj;
 		if (shortUrl == null) {
 			if (other.shortUrl != null) {
 				return false;
@@ -45,7 +45,7 @@ public class ShortUrlResource extends UrlResource {
 
 	@Override
 	public String toString() {
-		return "ShortUrlResource [shortUrl=" + shortUrl + "]";
+		return "ShortUrl [shortUrl=" + shortUrl + "]";
 	}
 	
 }

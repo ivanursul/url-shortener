@@ -6,12 +6,12 @@ package com.optigra.shortener.dao;
  * 
  * @author oyats
  *
- * @param <E>
+ * @param <ENTITY>
  *            Entity type.
- * @param <T>
+ * @param <KEY>
  *            Type of Id of entity.
  */
-public interface Dao<E, T> {
+public interface Dao<ENTITY, KEY> {
 
 	/**
 	 * Method to find Entity by Id.
@@ -20,7 +20,7 @@ public interface Dao<E, T> {
 	 *            Parameter by which we are trying to find our entity.
 	 * @return Found entity.
 	 */
-	E findById(T id);
+	ENTITY findById(KEY id);
 
 	/**
 	 * Method for saving entity.
@@ -28,5 +28,5 @@ public interface Dao<E, T> {
 	 * @param entity
 	 *            Parameter for entity to save.
 	 */
-	void save(E entity);
+	KEY save(ENTITY entity);
 }
