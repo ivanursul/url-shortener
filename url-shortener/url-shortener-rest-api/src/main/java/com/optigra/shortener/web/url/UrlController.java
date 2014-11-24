@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -15,7 +16,7 @@ import com.optigra.shortener.facade.resource.url.UrlResource;
 import com.optigra.shortener.facade.url.UrlShortenerFacade;
 
 @RestController
-@RequestMapping(value = "/url")
+@RequestMapping(value = "/urls")
 public class UrlController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UrlController.class);
@@ -38,4 +39,17 @@ public class UrlController {
 		return resource;
 	}
 
+
+    /**
+	 * Method for posting Url.
+	 * @param  urlResource resource to store.
+	 * @return resource resource.
+	 */
+    @ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(method = RequestMethod.POST)
+	public UrlResource createPicture(@RequestBody final UrlResource urlResource) {
+		LOG.info("Creating Url resource with: {}", urlResource);
+		return urlShortenerFacade.storeUrl(urlResource);
+	}
+	
 }

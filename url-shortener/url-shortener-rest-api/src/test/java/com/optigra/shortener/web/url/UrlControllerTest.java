@@ -20,9 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.optigra.shortener.facade.resource.url.UrlResource;
 import com.optigra.shortener.facade.url.UrlShortenerFacade;
+import com.optigra.shortener.web.AbstractControllerTest;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UrlControllerTest {
+public class UrlControllerTest extends AbstractControllerTest {
 
 	@InjectMocks
 	private UrlController unit;
@@ -51,12 +52,34 @@ public class UrlControllerTest {
     	when(shortenerFacade.getUrl(any(String.class))).thenReturn(expectedResource);
     	
 		// Then
-    	mockMvc.perform(get("/url/{shortUrl}", param)
+    	mockMvc.perform(get("/urls/{shortUrl}", param)
     			.contentType(MediaType.APPLICATION_JSON))
     		.andExpect(status().isOk())
     		.andExpect(content().string(expectedResponse));
     	
     	verify(shortenerFacade).getUrl(param);
+	}
+
+	@Test
+	public void testPostUrl() throws Exception{
+		// Given
+
+    	String url = "Url";
+    	UrlResource inputEntity = new UrlResource();
+		inputEntity.setUrl(url);
+		
+    	// When
+    	
+		String expectedResponse = objectMapper.writeValueAsString(inputEntity);
+		when(shortenerFacade.storeUrl(any(UrlResource.class))).thenReturn(inputEntity);
+	
+    	// Then
+    	
+		mockMvc.perform(post("/urls")
+    			.contentType(MediaType.APPLICATION_JSON)
+    			.content(getJson(inputEntity, true)))
+    			.andExpect(status().isCreated())
+    			.andExpect(content().string(expectedResponse));
 	}
 	
 }

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.optigra.shortener.facade.resource.message.MessageResource;
-import com.optigra.shortener.facade.resource.message.MessageType;
+import com.optigra.shortener.facade.resources.message.MessageResource;
+import com.optigra.shortener.facade.resources.message.MessageType;
 
 /**
  * Abstract Class for all common logic.
