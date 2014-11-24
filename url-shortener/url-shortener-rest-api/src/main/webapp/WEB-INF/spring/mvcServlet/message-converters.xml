@@ -6,7 +6,6 @@
 
 	<bean id="objectMapper" class="com.optigra.configuration.CustomObjectMapper"/>
 
-	<bean id="xmlMessageConverter" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
 	<bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="prettyPrint" value="${api.output.json.pretty}" />
 		<property name="objectMapper" ref="objectMapper"/>
@@ -17,7 +16,6 @@
 		<property name="messageConverters">
 			<list>
 				<ref bean="jsonMessageConverter" />
-				<ref bean="xmlMessageConverter" />
 			</list>
 		</property>
 	</bean>
