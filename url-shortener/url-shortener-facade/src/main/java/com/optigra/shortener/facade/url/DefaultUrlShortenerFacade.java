@@ -37,7 +37,7 @@ public class DefaultUrlShortenerFacade implements UrlShortenerFacade {
 	}
 
 	@Override
-	public UrlResource getUrl(final String shortUrl) {
+	public ShortUrlResource getUrl(final String shortUrl) {
 		LOG.info("Getting short url for: {}", shortUrl);
 		
 		ShortUrl url = urlShortenerService.getUrl(shortUrl);

@@ -1,5 +1,6 @@
 package com.optigra.shortener.facade.url;
 
+import com.optigra.shortener.facade.resource.url.ShortUrlResource;
 import com.optigra.shortener.facade.resource.url.UrlResource;
 
 /**
@@ -21,5 +22,5 @@ public interface UrlShortenerFacade {
 	 * @param shortUrl
 	 * @return short url
 	 */
-	UrlResource getUrl(String shortUrl);
+	ShortUrlResource getUrl(String shortUrl);
 }

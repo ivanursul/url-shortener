@@ -16,7 +16,7 @@ public class DefaulUrlGenerator implements UrlGenerator {
 	
 	@Resource(name = "base62Converter")
 	private Base62Converter converter;
-	
+
 	@Override
 	public ShortUrl generateShortUrl(final Url url) {
 		Long shorUrlMappingId = shortUrlMappingDao.save(url);
