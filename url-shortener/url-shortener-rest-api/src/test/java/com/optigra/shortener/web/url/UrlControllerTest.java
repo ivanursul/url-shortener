@@ -1,5 +1,14 @@
 package com.optigra.shortener.web.url;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,14 +19,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.optigra.shortener.facade.resource.url.ShortUrlResource;
 import com.optigra.shortener.facade.resource.url.UrlResource;
 import com.optigra.shortener.facade.url.UrlShortenerFacade;
 import com.optigra.shortener.web.AbstractControllerTest;
@@ -43,21 +46,21 @@ public class UrlControllerTest extends AbstractControllerTest {
 	@Test
 	public void testGetUrl() throws Exception{
 		// Given
-		String param = "someShortUrl";
+		String shortUrl = "someShortUrl";
 
-    	UrlResource expectedResource = new UrlResource();
+		ShortUrlResource expectedResource = new ShortUrlResource();
+    	expectedResource.setShortUrl(shortUrl);
     	
 		// When
-    	String expectedResponse = objectMapper.writeValueAsString(expectedResource);
     	when(shortenerFacade.getUrl(any(String.class))).thenReturn(expectedResource);
     	
 		// Then
-    	mockMvc.perform(get("/urls/{shortUrl}", param)
+    	mockMvc.perform(get("/urls/{shortUrl}", shortUrl)
     			.contentType(MediaType.APPLICATION_JSON))
-    		.andExpect(status().isOk())
-    		.andExpect(content().string(expectedResponse));
+    		.andExpect(status().is(302))
+    		.andExpect(header().string("Location", shortUrl));
     	
-    	verify(shortenerFacade).getUrl(param);
+    	verify(shortenerFacade).getUrl(shortUrl);
 	}
 
 	@Test

@@ -10,7 +10,7 @@ import com.optigra.shortener.model.url.ShortUrl;
 
 public class UrlConverterTest {
 
-	private String shortDomain = "http://xpl.ac/";
+	private String shortDomain = "shortUrl";
 	
 	private UrlConverter unit = new UrlConverter();
 
@@ -29,7 +29,7 @@ public class UrlConverterTest {
 		source.setShortUrl(shortUrl);
 		
 		ShortUrlResource expectedUrl = new ShortUrlResource();
-		expectedUrl.setShortUrl("http://xpl.ac/" + shortUrl);
+		expectedUrl.setShortUrl(shortDomain + shortUrl);
 		expectedUrl.setUrl(url);
 		
 		// When
