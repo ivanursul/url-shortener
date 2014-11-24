@@ -5,10 +5,4 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
 	default-autowire="byName">
 
-
-	<alias name="fileSystemContentService" alias="contentService"/>
-	<bean id="fileSystemContentService" class="com.optigra.funnypictures.content.service.FileSystemContentService">
-		<property name="contentRepositoryPath" value="${content.repository.path}" />
-	</bean>
-
 </beans>
