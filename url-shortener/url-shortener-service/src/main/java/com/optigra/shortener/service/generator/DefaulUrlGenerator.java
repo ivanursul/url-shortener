@@ -11,7 +11,7 @@ import com.optigra.shortener.model.url.Url;
 @Component("urlGenerator")
 public class DefaulUrlGenerator implements UrlGenerator {
 
-	@Resource(name = "shortUrlMappingDao")
+	@Resource(name = "redisShortUrlMappingDao")
 	private Dao<Url, Long> shortUrlMappingDao;
 	
 	@Resource(name = "base62Converter")

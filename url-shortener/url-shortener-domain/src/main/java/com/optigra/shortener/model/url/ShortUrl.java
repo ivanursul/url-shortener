@@ -1,9 +1,17 @@
 package com.optigra.shortener.model.url;
 
-public class ShortUrl extends Url {
+import com.optigra.shortener.model.Entity;
 
+public class ShortUrl extends Url implements Entity<String> {
+	private static final long serialVersionUID = 1L;
+	
 	private String shortUrl;
 
+	@Override
+	public String getKey() {
+		return getShortUrl();
+	}
+	
 	public String getShortUrl() {
 		return shortUrl;
 	}
@@ -47,5 +55,5 @@ public class ShortUrl extends Url {
 	public String toString() {
 		return "ShortUrl [shortUrl=" + shortUrl + "]";
 	}
-	
+
 }

@@ -2,8 +2,4 @@
 <!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
         "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 <urlrewrite>
-       <rule>
-           <from>/short/(.*)</from>
-           <to>/api/urls/$1</to>
-       </rule>
 </urlrewrite>

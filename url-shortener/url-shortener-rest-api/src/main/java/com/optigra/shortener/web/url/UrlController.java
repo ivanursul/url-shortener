@@ -19,9 +19,12 @@ import com.optigra.shortener.facade.resource.url.ShortUrlResource;
 import com.optigra.shortener.facade.resource.url.UrlResource;
 import com.optigra.shortener.facade.url.UrlShortenerFacade;
 import com.optigra.shortener.web.BaseController;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 @Controller
 @RequestMapping(value = "/urls")
+@Api(value = "Url Controller", description = "Controller, that describes url")
 public class UrlController extends BaseController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UrlController.class);
@@ -38,6 +41,7 @@ public class UrlController extends BaseController {
 	 */
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/{shortUrl}", method = RequestMethod.GET)
+	@ApiOperation(value = "Get's full url")
 	public RedirectView getUrl(@PathVariable("shortUrl") final String shortUrl,
 			final HttpServletResponse httpServletResponse){
 		LOG.info("Retrieving Url from Short Url");
@@ -58,6 +62,7 @@ public class UrlController extends BaseController {
 	@ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST)
+	@ApiOperation(value = "Creates new short url")
 	public UrlResource createPicture(@RequestBody final UrlResource urlResource) {
 		LOG.info("Creating Url resource with: {}", urlResource);
 		return urlShortenerFacade.storeUrl(urlResource);

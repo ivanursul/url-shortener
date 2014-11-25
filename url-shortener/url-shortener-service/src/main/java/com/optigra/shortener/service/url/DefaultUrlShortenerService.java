@@ -12,7 +12,7 @@ import com.optigra.shortener.service.generator.UrlGenerator;
 @Component("urlShortenerService")
 public class DefaultUrlShortenerService implements UrlShortenerService {
 
-	@Resource(name = "urlDao")
+	@Resource(name = "redisUrlDao")
 	private Dao<ShortUrl, String> shortUrlDao;
 	
 	@Resource(name = "urlGenerator")

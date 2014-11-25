@@ -19,7 +19,7 @@ public class UrlDaoTest {
 	private Map<String, ShortUrl> map;
 	
 	@InjectMocks
-	private UrlDao unit;
+	private SimpleUrlDao unit;
 	
 	@Test
 	public void testSave() throws Exception {

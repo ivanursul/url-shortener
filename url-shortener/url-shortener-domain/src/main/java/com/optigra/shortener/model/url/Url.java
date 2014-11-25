@@ -1,9 +1,19 @@
 package com.optigra.shortener.model.url;
 
-public class Url {
+import java.io.Serializable;
 
+import com.optigra.shortener.model.Entity;
+
+public class Url implements Serializable, Entity<String> {
+	private static final long serialVersionUID = 1L;
+	
 	private String url;
 
+	@Override
+	public String getKey() {
+		return getUrl();
+	}
+	
 	public String getUrl() {
 		return url;
 	}
@@ -46,5 +56,5 @@ public class Url {
 	public String toString() {
 		return "Url [url=" + url + "]";
 	}
-	
+
 }

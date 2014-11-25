@@ -46,10 +46,12 @@ public class UrlControllerTest extends AbstractControllerTest {
 	@Test
 	public void testGetUrl() throws Exception{
 		// Given
+		String url = "url";
 		String shortUrl = "someShortUrl";
 
 		ShortUrlResource expectedResource = new ShortUrlResource();
     	expectedResource.setShortUrl(shortUrl);
+		expectedResource.setUrl(url);
     	
 		// When
     	when(shortenerFacade.getUrl(any(String.class))).thenReturn(expectedResource);
@@ -58,7 +60,7 @@ public class UrlControllerTest extends AbstractControllerTest {
     	mockMvc.perform(get("/urls/{shortUrl}", shortUrl)
     			.contentType(MediaType.APPLICATION_JSON))
     		.andExpect(status().is(302))
-    		.andExpect(header().string("Location", shortUrl));
+    		.andExpect(header().string("Location", url));
     	
     	verify(shortenerFacade).getUrl(shortUrl);
 	}
