@@ -214,9 +214,18 @@
 	<profiles>
 		<profile>
 			<id>development</id>
+			<properties>
+				<api.output.url>http://localhost:8080/url-shortener-rest-api/api/urls&#47;</api.output.url>
+			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<api.output.url>http://localhost:8080/url-shortener-rest-api&#47;</api.output.url>
+			</properties>
 		</profile>
 	</profiles>
 </project>
