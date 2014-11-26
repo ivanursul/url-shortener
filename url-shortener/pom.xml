@@ -45,30 +45,6 @@
 	
 	<dependencyManagement>
 		<dependencies>
-		
-<!-- 		
-			TODO: Add to dependency managemenet	
-			<dependency>
-				<groupId>url-shortener</groupId>
-				<artifactId>url-shortener-facade</artifactId>
-				<version>${version}</version>
-			</dependency>		
-			<dependency>
-				<groupId>url-shortener</groupId>
-				<artifactId>url-shortener-service</artifactId>
-				<version>${version}</version>
-			</dependency>		
-			<dependency>
-				<groupId>url-shortener</groupId>
-				<artifactId>url-shortener-persistence</artifactId>
-				<version>${version}</version>
-			</dependency>		
-			<dependency>
-				<groupId>url-shortener</groupId>
-				<artifactId>url-shortener-domain</artifactId>
-				<version>${version}</version>
-			</dependency> -->		
-
 			<!-- Spring related dependencies -->		
 			<dependency>
 				<groupId>org.springframework</groupId>
